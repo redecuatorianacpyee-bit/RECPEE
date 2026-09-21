@@ -112,150 +112,136 @@
       </h1>
 
 
-<div class="recpee-slider">
+<section class="recpee-gallery-section">
+  <div class="container">
 
-  <div class="recpee-slide active">
-    <div class="photo-collage">
+    <div class="recpee-gallery" id="recpeeGallery">
 
-      <img
-        class="photo-main"
-        src="images/actividades/0.png"
-        alt="Actividad de RECPEE"
+      <!-- SLIDE 1 -->
+      <div class="gallery-slide gallery-slide-active">
+        <div class="gallery-layout">
+
+          <div class="gallery-main">
+            <img
+              src="images/actividades/IMG_3913.jpg"
+              alt="Actividad de la comunidad RECPEE"
+            >
+          </div>
+
+          <div class="gallery-small">
+            <img
+              src="images/actividades/0.png"
+              alt="Actividad RECPEE"
+            >
+
+            <img
+              src="images/actividades/0 (1).png"
+              alt="Actividad RECPEE"
+            >
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="gallery-slide">
+        <div class="gallery-layout">
+
+          <div class="gallery-main">
+            <img
+              src="images/actividades/IMG_2928.jpg"
+              alt="Actividad de la comunidad RECPEE"
+            >
+          </div>
+
+          <div class="gallery-small">
+            <img
+              src="images/actividades/image.png"
+              alt="Actividad RECPEE"
+            >
+
+            <img
+              src="images/actividades/actividad-placeholder.jpg"
+              alt="Actividad RECPEE"
+            >
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SLIDE 3 -->
+      <div class="gallery-slide">
+        <div class="gallery-layout">
+
+          <div class="gallery-main">
+            <img
+              src="images/actividades/0.png"
+              alt="Actividad de la comunidad RECPEE"
+            >
+          </div>
+
+          <div class="gallery-small">
+            <img
+              src="images/actividades/IMG_3913.jpg"
+              alt="Actividad RECPEE"
+            >
+
+            <img
+              src="images/actividades/IMG_2928.jpg"
+              alt="Actividad RECPEE"
+            >
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FLECHA IZQUIERDA -->
+      <button
+        class="gallery-arrow gallery-arrow-left"
+        id="galleryPrevious"
+        type="button"
+        aria-label="Imagen anterior"
       >
+        &#10094;
+      </button>
 
-      <img
-        src="images/actividades/0 (1).png"
-        alt="Actividad de RECPEE"
+      <!-- FLECHA DERECHA -->
+      <button
+        class="gallery-arrow gallery-arrow-right"
+        id="galleryNext"
+        type="button"
+        aria-label="Imagen siguiente"
       >
+        &#10095;
+      </button>
 
-      <img
-        src="images/actividades/IMG_2928.jpg"
-        alt="Actividad de RECPEE"
-      >
+      <!-- PUNTOS -->
+      <div class="gallery-indicators">
 
-      <img
-        src="images/actividades/IMG_3913.jpg"
-        alt="Actividad de RECPEE"
-      >
+        <button
+          class="gallery-dot gallery-dot-active"
+          data-gallery-slide="0"
+          aria-label="Mostrar diapositiva 1"
+        ></button>
 
-      <img
-        src="images/actividades/image.png"
-        alt="Actividad de RECPEE"
-      >
+        <button
+          class="gallery-dot"
+          data-gallery-slide="1"
+          aria-label="Mostrar diapositiva 2"
+        ></button>
+
+        <button
+          class="gallery-dot"
+          data-gallery-slide="2"
+          aria-label="Mostrar diapositiva 3"
+        ></button>
+
+      </div>
 
     </div>
-  </div>
-
-
-  <div class="recpee-slide">
-    <div class="photo-collage">
-
-      <img
-        class="photo-main"
-        src="images/actividades/IMG_2928.jpg"
-        alt="Actividad de RECPEE"
-      >
-
-      <img
-        src="images/actividades/image.png"
-        alt="Actividad de RECPEE"
-      >
-
-      <img
-        src="images/actividades/0.png"
-        alt="Actividad de RECPEE"
-      >
-
-      <img
-        src="images/actividades/actividad-placeholder.jpg"
-        alt="Actividad de RECPEE"
-      >
-
-      <img
-        src="images/actividades/0 (1).png"
-        alt="Actividad de RECPEE"
-      >
-
-    </div>
-  </div>
-
-
-  <div class="recpee-slide">
-    <div class="photo-collage">
-
-      <img
-        class="photo-main"
-        src="images/actividades/IMG_3913.jpg"
-        alt="Actividad de RECPEE"
-      >
-
-      <img
-        src="images/actividades/0.png"
-        alt="Actividad de RECPEE"
-      >
-
-      <img
-        src="images/actividades/IMG_2928.jpg"
-        alt="Actividad de RECPEE"
-      >
-
-      <img
-        src="images/actividades/image.png"
-        alt="Actividad de RECPEE"
-      >
-
-      <img
-        src="images/actividades/actividad-placeholder.jpg"
-        alt="Actividad de RECPEE"
-      >
-
-    </div>
-  </div>
-
-
-  <button
-    class="slider-button slider-prev"
-    type="button"
-    aria-label="Imagen anterior"
-  >
-    ❮
-  </button>
-
-  <button
-    class="slider-button slider-next"
-    type="button"
-    aria-label="Imagen siguiente"
-  >
-    ❯
-  </button>
-
-
-  <div class="slider-dots">
-
-    <button
-      class="slider-dot active"
-      type="button"
-      data-slide="0"
-      aria-label="Ir a imagen 1"
-    ></button>
-
-    <button
-      class="slider-dot"
-      type="button"
-      data-slide="1"
-      aria-label="Ir a imagen 2"
-    ></button>
-
-    <button
-      class="slider-dot"
-      type="button"
-      data-slide="2"
-      aria-label="Ir a imagen 3"
-    ></button>
 
   </div>
-
-</div>
+</section>
 
 
       <p class="home-description">

@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Inicio | RECPEE</title>
 
@@ -11,57 +16,1538 @@
     content="Red Ecuatoriana de Ciencias Planetarias y Exploración Espacial."
   >
 
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="css/styles.css">
+  <link
+    rel="icon"
+    href="favicon.ico"
+    type="image/x-icon"
+  >
+
+
+  <style>
+
+    /* =====================================================
+       VARIABLES
+    ===================================================== */
+
+    :root {
+
+      --bg: #edf3f8;
+
+      --surface: #ffffff;
+
+      --primary: #12395d;
+
+      --primary-dark: #0d2d4b;
+
+      --accent: #3d739b;
+
+      --primary-soft: #dce8f5;
+
+      --text: #10263f;
+
+      --muted: #57697d;
+
+      --shadow:
+        0 18px 45px
+        rgba(9, 27, 44, 0.12);
+
+      --max-width: 1180px;
+
+    }
+
+
+    /* =====================================================
+       GENERAL
+    ===================================================== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+
+      margin: 0;
+
+      font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+      color: var(--text);
+
+      background:
+        linear-gradient(
+          180deg,
+          #f8fbfe 0%,
+          var(--bg) 100%
+        );
+
+      line-height: 1.6;
+
+      overflow-x: hidden;
+
+    }
+
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    button {
+      font: inherit;
+    }
+
+
+    .container {
+
+      width:
+        min(
+          calc(100% - 32px),
+          var(--max-width)
+        );
+
+      margin: 0 auto;
+
+    }
+
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
+    .site-header {
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 1000;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          0.96
+        );
+
+      backdrop-filter:
+        blur(15px);
+
+      border-bottom:
+        1px solid
+        rgba(
+          16,
+          38,
+          63,
+          0.10
+        );
+
+    }
+
+
+    .nav-shell {
+
+      position: relative;
+
+      min-height: 80px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content:
+        space-between;
+
+      gap: 25px;
+
+    }
+
+
+    /* =====================================================
+       LOGO
+    ===================================================== */
+
+    .brand {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      min-width: 0;
+
+    }
+
+
+    .brand-logo {
+
+      width: 55px;
+
+      height: 55px;
+
+      object-fit: contain;
+
+      flex-shrink: 0;
+
+    }
+
+
+    .brand-copy {
+
+      display: flex;
+
+      flex-direction: column;
+
+      line-height: 1.25;
+
+    }
+
+
+    .brand-copy strong {
+
+      color: var(--primary);
+
+      font-size: 17px;
+
+      letter-spacing: 0.05em;
+
+    }
+
+
+    .brand-copy small {
+
+      max-width: 330px;
+
+      color: var(--muted);
+
+      font-size: 11px;
+
+    }
+
+
+    /* =====================================================
+       MENÚ
+    ===================================================== */
+
+    .site-nav {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 20px;
+
+    }
+
+
+    .site-nav a {
+
+      position: relative;
+
+      padding: 28px 0;
+
+      color: var(--muted);
+
+      font-size: 14px;
+
+      white-space: nowrap;
+
+      transition:
+        color 0.2s ease;
+
+    }
+
+
+    .site-nav a:hover,
+    .site-nav a.active {
+
+      color: var(--primary);
+
+    }
+
+
+    .site-nav a.active {
+
+      font-weight: 700;
+
+    }
+
+
+    .site-nav a::after {
+
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+
+      bottom: 20px;
+
+      width: 100%;
+
+      height: 2px;
+
+      background:
+        var(--accent);
+
+      transform:
+        scaleX(0);
+
+      transform-origin:
+        left;
+
+      transition:
+        transform 0.2s ease;
+
+    }
+
+
+    .site-nav a:hover::after,
+    .site-nav a.active::after {
+
+      transform:
+        scaleX(1);
+
+    }
+
+
+    /* =====================================================
+       BOTÓN MENÚ MÓVIL
+    ===================================================== */
+
+    .nav-toggle {
+
+      display: none;
+
+      width: 46px;
+
+      height: 46px;
+
+      padding: 0;
+
+      border: 0;
+
+      border-radius: 12px;
+
+      background: white;
+
+      box-shadow:
+        0 5px 16px
+        rgba(
+          16,
+          38,
+          63,
+          0.15
+        );
+
+      cursor: pointer;
+
+    }
+
+
+    .nav-toggle span {
+
+      display: block;
+
+      width: 22px;
+
+      height: 2px;
+
+      margin: 5px auto;
+
+      border-radius: 10px;
+
+      background:
+        var(--primary);
+
+    }
+
+
+    /* =====================================================
+       INICIO
+    ===================================================== */
+
+    .home-hero {
+
+      padding:
+        55px
+        0
+        35px;
+
+    }
+
+
+    .home-eyebrow {
+
+      margin:
+        0
+        0
+        10px;
+
+      color: var(--accent);
+
+      font-size: 13px;
+
+      font-weight: 800;
+
+      letter-spacing:
+        0.12em;
+
+      text-transform:
+        uppercase;
+
+    }
+
+
+    .home-title {
+
+      max-width: 1050px;
+
+      margin:
+        0
+        0
+        35px;
+
+      color: var(--primary);
+
+      font-size:
+        clamp(
+          42px,
+          5.5vw,
+          72px
+        );
+
+      line-height: 1.07;
+
+      letter-spacing:
+        -0.025em;
+
+    }
+
+
+    /* =====================================================
+       GALERÍA / CARRUSEL
+    ===================================================== */
+
+    .recpee-gallery {
+
+      position: relative;
+
+      width: 100%;
+
+      margin:
+        0
+        auto
+        30px;
+
+      overflow: hidden;
+
+      border-radius: 20px;
+
+      background: #081b2e;
+
+      box-shadow:
+        0 20px 50px
+        rgba(
+          9,
+          27,
+          44,
+          0.18
+        );
+
+    }
+
+
+    /* Ocultar todos los slides */
+
+    .gallery-slide {
+
+      display: none;
+
+      width: 100%;
+
+    }
+
+
+    /* Mostrar únicamente el activo */
+
+    .gallery-slide.active {
+
+      display: block;
+
+      animation:
+        fadeSlide
+        0.35s ease;
+
+    }
+
+
+    @keyframes fadeSlide {
+
+      from {
+        opacity: 0.45;
+      }
+
+      to {
+        opacity: 1;
+      }
+
+    }
+
+
+    /* =====================================================
+       COLLAGE
+    ===================================================== */
+
+    .gallery-layout {
+
+      display: grid;
+
+      grid-template-columns:
+        3fr
+        1fr;
+
+      gap: 3px;
+
+      width: 100%;
+
+      height: 570px;
+
+      background: white;
+
+    }
+
+
+    .gallery-main {
+
+      min-width: 0;
+
+      overflow: hidden;
+
+    }
+
+
+    .gallery-main img {
+
+      width: 100%;
+
+      height: 100%;
+
+      object-fit: cover;
+
+    }
+
+
+    .gallery-small {
+
+      min-width: 0;
+
+      display: grid;
+
+      grid-template-rows:
+        1fr
+        1fr;
+
+      gap: 3px;
+
+    }
+
+
+    .gallery-small img {
+
+      width: 100%;
+
+      height: 100%;
+
+      min-height: 0;
+
+      object-fit: cover;
+
+    }
+
+
+    /* =====================================================
+       FLECHAS DEL CARRUSEL
+    ===================================================== */
+
+    .gallery-arrow {
+
+      position: absolute;
+
+      top: 50%;
+
+      z-index: 20;
+
+      width: 48px;
+
+      height: 48px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content:
+        center;
+
+      padding: 0;
+
+      border: 0;
+
+      border-radius: 50%;
+
+      background:
+        rgba(
+          9,
+          25,
+          42,
+          0.70
+        );
+
+      color: white;
+
+      font-size: 25px;
+
+      cursor: pointer;
+
+      transform:
+        translateY(-50%);
+
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+
+    }
+
+
+    .gallery-arrow:hover {
+
+      background:
+        rgba(
+          9,
+          25,
+          42,
+          0.95
+        );
+
+      transform:
+        translateY(-50%)
+        scale(1.08);
+
+    }
+
+
+    .gallery-prev {
+      left: 15px;
+    }
+
+
+    .gallery-next {
+      right: 15px;
+    }
+
+
+    /* =====================================================
+       INDICADORES
+    ===================================================== */
+
+    .gallery-dots {
+
+      position: absolute;
+
+      left: 50%;
+
+      bottom: 16px;
+
+      z-index: 20;
+
+      display: flex;
+
+      gap: 8px;
+
+      transform:
+        translateX(-50%);
+
+    }
+
+
+    .gallery-dot {
+
+      width: 11px;
+
+      height: 11px;
+
+      padding: 0;
+
+      border:
+        2px solid white;
+
+      border-radius: 50%;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          0.35
+        );
+
+      cursor: pointer;
+
+    }
+
+
+    .gallery-dot.active {
+
+      background: white;
+
+    }
+
+
+    /* =====================================================
+       TEXTO BAJO COLLAGE
+    ===================================================== */
+
+    .home-description {
+
+      max-width: 1000px;
+
+      margin:
+        30px
+        0
+        0;
+
+      color: #334a60;
+
+      font-size: 18px;
+
+      line-height: 1.7;
+
+    }
+
+
+    /* =====================================================
+       BOTONES
+    ===================================================== */
+
+    .home-actions {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 14px;
+
+      margin-top: 25px;
+
+    }
+
+
+    .button {
+
+      min-height: 50px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content:
+        center;
+
+      padding:
+        12px
+        25px;
+
+      border-radius: 100px;
+
+      font-weight: 700;
+
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+    }
+
+
+    .button:hover {
+
+      transform:
+        translateY(-2px);
+
+    }
+
+
+    .button-primary {
+
+      background:
+        var(--primary);
+
+      color: white;
+
+      box-shadow:
+        0 10px 25px
+        rgba(
+          18,
+          57,
+          93,
+          0.25
+        );
+
+    }
+
+
+    .button-primary:hover {
+
+      background:
+        #1c527d;
+
+    }
+
+
+    .button-secondary {
+
+      border:
+        2px solid
+        var(--primary);
+
+      background: white;
+
+      color: var(--primary);
+
+    }
+
+
+    .button-secondary:hover {
+
+      background:
+        var(--primary-soft);
+
+    }
+
+
+    /* =====================================================
+       MISIÓN Y VISIÓN
+    ===================================================== */
+
+    .home-info {
+
+      padding:
+        55px
+        0;
+
+    }
+
+
+    .home-info-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          2,
+          minmax(0, 1fr)
+        );
+
+      gap: 25px;
+
+    }
+
+
+    .home-info-card {
+
+      padding: 35px;
+
+      border:
+        1px solid
+        rgba(
+          18,
+          57,
+          93,
+          0.08
+        );
+
+      border-radius: 25px;
+
+      background: white;
+
+      box-shadow:
+        var(--shadow);
+
+    }
+
+
+    .info-number {
+
+      width: 45px;
+
+      height: 45px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content:
+        center;
+
+      border-radius: 50%;
+
+      background:
+        var(--primary-soft);
+
+      color:
+        var(--primary);
+
+      font-weight: 800;
+
+    }
+
+
+    .home-info-card h2 {
+
+      margin:
+        18px
+        0
+        12px;
+
+      color:
+        var(--primary);
+
+      font-size: 32px;
+
+    }
+
+
+    .home-info-card p {
+
+      color:
+        var(--muted);
+
+    }
+
+
+    .text-link {
+
+      display: inline-block;
+
+      margin-top: 8px;
+
+      color:
+        var(--primary);
+
+      font-weight: 700;
+
+    }
+
+
+    /* =====================================================
+       EXPLORAR
+    ===================================================== */
+
+    .home-explore {
+
+      padding:
+        25px
+        0
+        80px;
+
+    }
+
+
+    .section-tag {
+
+      margin-bottom: 5px;
+
+      color:
+        var(--accent);
+
+      font-size: 13px;
+
+      font-weight: 800;
+
+      letter-spacing:
+        0.12em;
+
+      text-transform:
+        uppercase;
+
+    }
+
+
+    .section-heading h2 {
+
+      margin:
+        0
+        0
+        30px;
+
+      color:
+        var(--primary);
+
+      font-size:
+        clamp(
+          30px,
+          4vw,
+          42px
+        );
+
+    }
+
+
+    .home-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          4,
+          minmax(0, 1fr)
+        );
+
+      gap: 20px;
+
+    }
+
+
+    .nav-card {
+
+      padding: 25px;
+
+      border-radius: 22px;
+
+      background: white;
+
+      box-shadow:
+        var(--shadow);
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+    }
+
+
+    .nav-card:hover {
+
+      transform:
+        translateY(-5px);
+
+      box-shadow:
+        0 24px 50px
+        rgba(
+          9,
+          27,
+          44,
+          0.17
+        );
+
+    }
+
+
+    .nav-card span {
+
+      display: inline-flex;
+
+      width: 42px;
+
+      height: 42px;
+
+      align-items: center;
+
+      justify-content:
+        center;
+
+      border-radius: 12px;
+
+      background:
+        var(--primary-soft);
+
+      color:
+        var(--primary);
+
+      font-weight: 800;
+
+    }
+
+
+    .nav-card h3 {
+
+      margin:
+        15px
+        0
+        5px;
+
+      color:
+        var(--primary);
+
+    }
+
+
+    .nav-card p {
+
+      margin: 0;
+
+      color:
+        var(--muted);
+
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    .site-footer {
+
+      padding:
+        45px
+        0
+        20px;
+
+      background:
+        var(--primary-dark);
+
+      color:
+        #eef4fb;
+
+    }
+
+
+    .footer-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        1.2fr
+        0.8fr
+        1fr;
+
+      gap: 40px;
+
+    }
+
+
+    .footer-logo {
+
+      width: 65px;
+
+      height: 65px;
+
+      object-fit: contain;
+
+      margin-bottom: 12px;
+
+    }
+
+
+    .footer-list {
+
+      margin: 0;
+
+      padding: 0;
+
+      list-style: none;
+
+    }
+
+
+    .footer-list li {
+
+      margin-bottom: 7px;
+
+    }
+
+
+    .footer-list a:hover {
+
+      text-decoration:
+        underline;
+
+    }
+
+
+    .footer-bottom {
+
+      margin-top: 35px;
+
+      padding-top: 18px;
+
+      border-top:
+        1px solid
+        rgba(
+          255,
+          255,
+          255,
+          0.15
+        );
+
+      font-size: 14px;
+
+    }
+
+
+    /* =====================================================
+       TABLET
+    ===================================================== */
+
+    @media (max-width: 1000px) {
+
+      .nav-toggle {
+        display: block;
+      }
+
+
+      .site-nav {
+
+        position: absolute;
+
+        top: calc(100% + 8px);
+
+        left: 0;
+
+        right: 0;
+
+        display: none;
+
+        padding: 12px;
+
+        border-radius: 18px;
+
+        background: white;
+
+        box-shadow:
+          0 20px 45px
+          rgba(
+            9,
+            27,
+            44,
+            0.20
+          );
+
+      }
+
+
+      .site-nav.open {
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items:
+          stretch;
+
+        gap: 2px;
+
+      }
+
+
+      .site-nav a {
+
+        padding:
+          11px
+          15px;
+
+        border-radius: 10px;
+
+      }
+
+
+      .site-nav a::after {
+        display: none;
+      }
+
+
+      .site-nav a:hover {
+
+        background:
+          var(--primary-soft);
+
+      }
+
+
+      .gallery-layout {
+
+        height: 480px;
+
+        grid-template-columns:
+          2.5fr
+          1fr;
+
+      }
+
+
+      .home-grid {
+
+        grid-template-columns:
+          repeat(
+            2,
+            minmax(0, 1fr)
+          );
+
+      }
+
+    }
+
+
+    /* =====================================================
+       CELULAR
+    ===================================================== */
+
+    @media (max-width: 650px) {
+
+      .container {
+
+        width:
+          calc(
+            100% - 20px
+          );
+
+      }
+
+
+      .nav-shell {
+
+        min-height: 70px;
+
+      }
+
+
+      .brand-logo {
+
+        width: 45px;
+
+        height: 45px;
+
+      }
+
+
+      .brand-copy strong {
+
+        font-size: 14px;
+
+      }
+
+
+      .brand-copy small {
+        display: none;
+      }
+
+
+      .home-hero {
+
+        padding:
+          30px
+          0
+          25px;
+
+      }
+
+
+      .home-title {
+
+        margin-bottom: 22px;
+
+        font-size:
+          clamp(
+            34px,
+            10vw,
+            46px
+          );
+
+      }
+
+
+      .gallery-layout {
+
+        height: 350px;
+
+        grid-template-columns:
+          2fr
+          1fr;
+
+      }
+
+
+      .gallery-arrow {
+
+        width: 38px;
+
+        height: 38px;
+
+        font-size: 19px;
+
+      }
+
+
+      .gallery-prev {
+        left: 8px;
+      }
+
+
+      .gallery-next {
+        right: 8px;
+      }
+
+
+      .home-description {
+
+        font-size: 16px;
+
+      }
+
+
+      .home-actions {
+
+        display: grid;
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+
+      .button {
+
+        width: 100%;
+
+      }
+
+
+      .home-info-grid,
+      .home-grid,
+      .footer-grid {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+
+      .home-info-card {
+
+        padding: 24px;
+
+      }
+
+
+      .home-info-card h2 {
+
+        font-size: 28px;
+
+      }
+
+    }
+
+
+    /* =====================================================
+       CELULAR PEQUEÑO
+    ===================================================== */
+
+    @media (max-width: 430px) {
+
+      .gallery-layout {
+
+        height: 300px;
+
+      }
+
+
+      .home-title {
+
+        font-size: 32px;
+
+      }
+
+    }
+
+  </style>
+
 </head>
 
+
 <body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
 <header class="site-header">
 
   <div class="container nav-shell">
 
+
     <a
-      class="brand"
       href="index.html"
+      class="brand"
       aria-label="Ir al inicio de RECPEE"
     >
 
       <img
         src="images/logo/logo-recpee.png"
-        alt="Logo de RECPEE"
+        alt="Logo RECPEE"
         class="brand-logo"
       >
 
+
       <span class="brand-copy">
-        <strong>RECPEE</strong>
+
+        <strong>
+          RECPEE
+        </strong>
+
         <small>
-          Red Ecuatoriana de Ciencias Planetarias y Exploración Espacial
+          Red Ecuatoriana de Ciencias Planetarias
+          y Exploración Espacial
         </small>
+
       </span>
 
     </a>
 
+
     <button
       class="nav-toggle"
+      id="navToggle"
       type="button"
-      id="nav-toggle"
-      aria-expanded="false"
-      aria-controls="site-nav"
       aria-label="Abrir menú"
+      aria-expanded="false"
     >
+
       <span></span>
       <span></span>
       <span></span>
+
     </button>
+
 
     <nav
       class="site-nav"
-      id="site-nav"
+      id="siteNav"
       aria-label="Navegación principal"
     >
 
-      <a href="index.html" class="active">Inicio</a>
+      <a
+        href="index.html"
+        class="active"
+      >
+        Inicio
+      </a>
 
       <a href="quienes-somos.html">
         Quiénes somos
@@ -94,41 +1580,62 @@
 </header>
 
 
-<main id="main-content">
+<!-- =====================================================
+     CONTENIDO
+===================================================== -->
 
-  <!-- INICIO PRINCIPAL -->
-
-  <section class="home-hero">
-
-    <div class="container">
-
-      <p class="home-eyebrow">
-        Ciencias planetarias · Ecuador
-      </p>
-
-      <h1>
-        Red Ecuatoriana de Ciencias
-        Planetarias y Exploración Espacial
-      </h1>
+<main>
 
 
-<section class="recpee-gallery-section">
+<!-- =====================================================
+     INICIO
+===================================================== -->
+
+<section class="home-hero">
+
   <div class="container">
 
-    <div class="recpee-gallery" id="recpeeGallery">
+
+    <p class="home-eyebrow">
+      Ciencias planetarias · Ecuador
+    </p>
+
+
+    <h1 class="home-title">
+      Red Ecuatoriana de Ciencias Planetarias
+      y Exploración Espacial
+    </h1>
+
+
+    <!-- =================================================
+         CARRUSEL
+    ================================================== -->
+
+    <div
+      class="recpee-gallery"
+      id="recpeeGallery"
+    >
+
 
       <!-- SLIDE 1 -->
-      <div class="gallery-slide gallery-slide-active">
+
+      <div class="gallery-slide active">
+
         <div class="gallery-layout">
 
+
           <div class="gallery-main">
+
             <img
               src="images/actividades/IMG_3913.jpg"
               alt="Actividad de la comunidad RECPEE"
             >
+
           </div>
 
+
           <div class="gallery-small">
+
             <img
               src="images/actividades/0.png"
               alt="Actividad RECPEE"
@@ -138,23 +1645,33 @@
               src="images/actividades/0 (1).png"
               alt="Actividad RECPEE"
             >
+
           </div>
 
         </div>
+
       </div>
 
+
       <!-- SLIDE 2 -->
+
       <div class="gallery-slide">
+
         <div class="gallery-layout">
 
+
           <div class="gallery-main">
+
             <img
               src="images/actividades/IMG_2928.jpg"
-              alt="Actividad de la comunidad RECPEE"
+              alt="Actividad RECPEE"
             >
+
           </div>
 
+
           <div class="gallery-small">
+
             <img
               src="images/actividades/image.png"
               alt="Actividad RECPEE"
@@ -164,23 +1681,33 @@
               src="images/actividades/actividad-placeholder.jpg"
               alt="Actividad RECPEE"
             >
+
           </div>
 
         </div>
+
       </div>
 
+
       <!-- SLIDE 3 -->
+
       <div class="gallery-slide">
+
         <div class="gallery-layout">
 
+
           <div class="gallery-main">
+
             <img
               src="images/actividades/0.png"
-              alt="Actividad de la comunidad RECPEE"
+              alt="Actividad RECPEE"
             >
+
           </div>
 
+
           <div class="gallery-small">
+
             <img
               src="images/actividades/IMG_3913.jpg"
               alt="Actividad RECPEE"
@@ -190,24 +1717,30 @@
               src="images/actividades/IMG_2928.jpg"
               alt="Actividad RECPEE"
             >
+
           </div>
 
         </div>
+
       </div>
 
+
       <!-- FLECHA IZQUIERDA -->
+
       <button
-        class="gallery-arrow gallery-arrow-left"
-        id="galleryPrevious"
+        class="gallery-arrow gallery-prev"
+        id="galleryPrev"
         type="button"
         aria-label="Imagen anterior"
       >
         &#10094;
       </button>
 
+
       <!-- FLECHA DERECHA -->
+
       <button
-        class="gallery-arrow gallery-arrow-right"
+        class="gallery-arrow gallery-next"
         id="galleryNext"
         type="button"
         aria-label="Imagen siguiente"
@@ -215,24 +1748,31 @@
         &#10095;
       </button>
 
+
       <!-- PUNTOS -->
-      <div class="gallery-indicators">
+
+      <div class="gallery-dots">
 
         <button
-          class="gallery-dot gallery-dot-active"
-          data-gallery-slide="0"
+          class="gallery-dot active"
+          data-slide="0"
+          type="button"
           aria-label="Mostrar diapositiva 1"
         ></button>
 
-        <button
-          class="gallery-dot"
-          data-gallery-slide="1"
-          aria-label="Mostrar diapositiva 2"
-        ></button>
 
         <button
           class="gallery-dot"
-          data-gallery-slide="2"
+          data-slide="1"
+          type="button"
+          aria-label="Mostrar diapositiva 2"
+        ></button>
+
+
+        <button
+          class="gallery-dot"
+          data-slide="2"
+          type="button"
           aria-label="Mostrar diapositiva 3"
         ></button>
 
@@ -240,209 +1780,257 @@
 
     </div>
 
+
+    <!-- =================================================
+         DESCRIPCIÓN
+    ================================================== -->
+
+    <p class="home-description">
+
+      Somos una comunidad apasionada por el desarrollo
+      de las Ciencias Planetarias y la Exploración Espacial
+      en Ecuador.
+
+      Buscamos conectar estudiantes, investigadores,
+      instituciones y entusiastas del espacio para
+      fortalecer la investigación, la educación,
+      la divulgación y la cooperación científica.
+
+    </p>
+
+
+    <!-- =================================================
+         BOTONES
+    ================================================== -->
+
+    <div class="home-actions">
+
+
+      <a
+        href="quienes-somos.html"
+        class="button button-primary"
+      >
+        Conoce la RECPEE
+      </a>
+
+
+      <a
+        href="nuestra-comunidad.html"
+        class="button button-secondary"
+      >
+        Nuestra comunidad
+      </a>
+
+
+    </div>
+
   </div>
+
 </section>
 
 
-      <p class="home-description">
-        Somos una comunidad apasionada por el desarrollo de las
-        Ciencias Planetarias y la Exploración Espacial en Ecuador.
-        Buscamos conectar estudiantes, investigadores, instituciones
-        y entusiastas del espacio para fortalecer la investigación,
-        educación, divulgación y cooperación científica.
+<!-- =====================================================
+     MISIÓN / VISIÓN
+===================================================== -->
+
+<section class="home-info">
+
+  <div class="container home-info-grid">
+
+
+    <article class="home-info-card">
+
+      <span class="info-number">
+        01
+      </span>
+
+
+      <h2>
+        Misión
+      </h2>
+
+
+      <p>
+
+        Reunir e integrar a la comunidad científica
+        ecuatoriana dedicada a las ciencias planetarias
+        y la exploración espacial, fomentando un entorno
+        inclusivo, interdisciplinario y colaborativo.
+
       </p>
 
 
-      <div class="home-actions">
+      <a
+        href="mision-vision.html"
+        class="text-link"
+      >
+        Conocer más →
+      </a>
 
-        <a
-          class="button button-primary"
-          href="quienes-somos.html"
-        >
-          Conoce la RECPEE
-        </a>
+    </article>
 
-        <a
-          class="button button-secondary"
-          href="nuestra-comunidad.html"
-        >
-          Nuestra comunidad
-        </a>
 
-      </div>
+    <article class="home-info-card">
+
+      <span class="info-number">
+        02
+      </span>
+
+
+      <h2>
+        Visión
+      </h2>
+
+
+      <p>
+
+        Consolidar una comunidad nacional capaz de
+        impulsar la investigación, educación,
+        divulgación y participación del Ecuador
+        en las ciencias planetarias y la
+        exploración espacial.
+
+      </p>
+
+
+      <a
+        href="mision-vision.html"
+        class="text-link"
+      >
+        Conocer más →
+      </a>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     EXPLORA RECPEE
+===================================================== -->
+
+<section class="home-explore">
+
+  <div class="container">
+
+
+    <div class="section-heading">
+
+      <p class="section-tag">
+        Explora RECPEE
+      </p>
+
+
+      <h2>
+        Conoce nuestra comunidad
+      </h2>
 
     </div>
 
-  </section>
+
+    <div class="home-grid">
 
 
-  <!-- MISIÓN Y VISIÓN -->
+      <a
+        href="nuestra-comunidad.html"
+        class="nav-card"
+      >
 
-  <section class="home-info">
-
-    <div class="container home-info-grid">
-
-      <article class="home-info-card">
-
-        <span class="info-number">
+        <span>
           01
         </span>
 
-        <h2>
-          Misión
-        </h2>
+        <h3>
+          Nuestra comunidad
+        </h3>
 
         <p>
-          Reunir e integrar a la comunidad científica ecuatoriana
-          dedicada a las ciencias planetarias y la exploración espacial,
-          fomentando un entorno inclusivo, interdisciplinario y
-          colaborativo.
+          Conoce a quienes forman parte de RECPEE.
         </p>
 
-        <a
-          href="mision-vision.html"
-          class="text-link"
-        >
-          Conocer más →
-        </a>
-
-      </article>
+      </a>
 
 
-      <article class="home-info-card">
+      <a
+        href="actividades.html"
+        class="nav-card"
+      >
 
-        <span class="info-number">
+        <span>
           02
         </span>
 
-        <h2>
-          Visión
-        </h2>
+        <h3>
+          Actividades
+        </h3>
 
         <p>
-          Consolidar una comunidad nacional capaz de impulsar la
-          investigación, educación, divulgación y participación del
-          Ecuador en las ciencias planetarias y la exploración espacial.
+          Proyectos, talleres, cursos y divulgación.
         </p>
 
-        <a
-          href="mision-vision.html"
-          class="text-link"
-        >
-          Conocer más →
-        </a>
+      </a>
 
-      </article>
+
+      <a
+        href="eventos.html"
+        class="nav-card"
+      >
+
+        <span>
+          03
+        </span>
+
+        <h3>
+          Eventos
+        </h3>
+
+        <p>
+          Conferencias, encuentros y convocatorias.
+        </p>
+
+      </a>
+
+
+      <a
+        href="contacto.html"
+        class="nav-card"
+      >
+
+        <span>
+          04
+        </span>
+
+        <h3>
+          Contacto
+        </h3>
+
+        <p>
+          Comunícate con la red.
+        </p>
+
+      </a>
+
 
     </div>
 
-  </section>
+  </div>
 
+</section>
 
-  <!-- ACCESOS -->
-
-  <section class="home-explore">
-
-    <div class="container">
-
-      <div class="section-heading">
-
-        <p class="section-tag">
-          Explora RECPEE
-        </p>
-
-        <h2>
-          Conoce nuestra comunidad
-        </h2>
-
-      </div>
-
-
-      <div class="home-grid">
-
-        <a
-          class="nav-card"
-          href="nuestra-comunidad.html"
-        >
-
-          <span>01</span>
-
-          <h3>
-            Nuestra comunidad
-          </h3>
-
-          <p>
-            Conoce a quienes forman parte de RECPEE.
-          </p>
-
-        </a>
-
-
-        <a
-          class="nav-card"
-          href="actividades.html"
-        >
-
-          <span>02</span>
-
-          <h3>
-            Actividades
-          </h3>
-
-          <p>
-            Proyectos, talleres, cursos y divulgación.
-          </p>
-
-        </a>
-
-
-        <a
-          class="nav-card"
-          href="eventos.html"
-        >
-
-          <span>03</span>
-
-          <h3>
-            Eventos
-          </h3>
-
-          <p>
-            Conferencias, encuentros y convocatorias.
-          </p>
-
-        </a>
-
-
-        <a
-          class="nav-card"
-          href="contacto.html"
-        >
-
-          <span>04</span>
-
-          <h3>
-            Contacto
-          </h3>
-
-          <p>
-            Comunícate con la red.
-          </p>
-
-        </a>
-
-      </div>
-
-    </div>
-
-  </section>
 
 </main>
 
 
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer class="site-footer">
 
   <div class="container footer-grid">
+
 
     <div>
 
@@ -453,8 +2041,10 @@
       >
 
       <p>
+
         Red Ecuatoriana de Ciencias Planetarias
         y Exploración Espacial
+
       </p>
 
     </div>
@@ -535,14 +2125,20 @@
 
     </div>
 
+
   </div>
 
 
   <div class="container footer-bottom">
 
     <p>
-      © <span id="current-year"></span>
-      Red Ecuatoriana de Ciencias Planetarias y Exploración Espacial
+
+      ©
+      <span id="currentYear"></span>
+
+      Red Ecuatoriana de Ciencias Planetarias
+      y Exploración Espacial
+
     </p>
 
   </div>
@@ -550,56 +2146,421 @@
 </footer>
 
 
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
 <script>
 
-const menuButton =
-  document.getElementById("nav-toggle");
-
-const menu =
-  document.getElementById("site-nav");
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
 
 
-menuButton.addEventListener("click", function () {
+    /* =================================================
+       MENÚ MÓVIL
+    ================================================= */
 
-  const open =
-    menu.classList.toggle("is-open");
-
-  menuButton.setAttribute(
-    "aria-expanded",
-    open
-  );
-
-});
+    const navToggle =
+      document.getElementById(
+        "navToggle"
+      );
 
 
-document
-  .querySelectorAll(".site-nav a")
-  .forEach(function(link) {
+    const siteNav =
+      document.getElementById(
+        "siteNav"
+      );
 
-    link.addEventListener(
-      "click",
-      function() {
 
-        menu.classList.remove("is-open");
+    if (
+      navToggle &&
+      siteNav
+    ) {
 
-        menuButton.setAttribute(
-          "aria-expanded",
-          "false"
+
+      navToggle.addEventListener(
+        "click",
+        function () {
+
+
+          const isOpen =
+            siteNav.classList.toggle(
+              "open"
+            );
+
+
+          navToggle.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+          );
+
+
+        }
+      );
+
+
+      document
+        .querySelectorAll(
+          ".site-nav a"
+        )
+        .forEach(
+          function (link) {
+
+
+            link.addEventListener(
+              "click",
+              function () {
+
+
+                siteNav.classList.remove(
+                  "open"
+                );
+
+
+                navToggle.setAttribute(
+                  "aria-expanded",
+                  "false"
+                );
+
+
+              }
+            );
+
+
+          }
         );
+
+
+    }
+
+
+    /* =================================================
+       CARRUSEL
+    ================================================= */
+
+    const slides =
+      document.querySelectorAll(
+        ".gallery-slide"
+      );
+
+
+    const dots =
+      document.querySelectorAll(
+        ".gallery-dot"
+      );
+
+
+    const previousButton =
+      document.getElementById(
+        "galleryPrev"
+      );
+
+
+    const nextButton =
+      document.getElementById(
+        "galleryNext"
+      );
+
+
+    let currentSlide = 0;
+
+
+    /* ===============================================
+       MOSTRAR SLIDE
+    =============================================== */
+
+    function showSlide(index) {
+
+
+      if (
+        slides.length === 0
+      ) {
+
+        return;
+
+      }
+
+
+      /* Si pasa del último,
+         regresa al primero */
+
+      if (
+        index >= slides.length
+      ) {
+
+        currentSlide = 0;
+
+      }
+
+
+      /* Si retrocede desde el primero,
+         pasa al último */
+
+      else if (
+        index < 0
+      ) {
+
+        currentSlide =
+          slides.length - 1;
+
+      }
+
+
+      else {
+
+        currentSlide = index;
+
+      }
+
+
+      /* Ocultar slides */
+
+      slides.forEach(
+        function (slide) {
+
+          slide.classList.remove(
+            "active"
+          );
+
+        }
+      );
+
+
+      /* Desactivar puntos */
+
+      dots.forEach(
+        function (dot) {
+
+          dot.classList.remove(
+            "active"
+          );
+
+        }
+      );
+
+
+      /* Mostrar slide */
+
+      slides[currentSlide]
+        .classList.add(
+          "active"
+        );
+
+
+      /* Activar punto */
+
+      if (
+        dots[currentSlide]
+      ) {
+
+        dots[currentSlide]
+          .classList.add(
+            "active"
+          );
+
+      }
+
+
+    }
+
+
+    /* =================================================
+       FLECHA DERECHA
+    ================================================= */
+
+    if (
+      nextButton
+    ) {
+
+
+      nextButton.addEventListener(
+        "click",
+        function () {
+
+
+          showSlide(
+            currentSlide + 1
+          );
+
+
+        }
+      );
+
+
+    }
+
+
+    /* =================================================
+       FLECHA IZQUIERDA
+    ================================================= */
+
+    if (
+      previousButton
+    ) {
+
+
+      previousButton.addEventListener(
+        "click",
+        function () {
+
+
+          showSlide(
+            currentSlide - 1
+          );
+
+
+        }
+      );
+
+
+    }
+
+
+    /* =================================================
+       PUNTOS
+    ================================================= */
+
+    dots.forEach(
+      function (dot) {
+
+
+        dot.addEventListener(
+          "click",
+          function () {
+
+
+            const index =
+              Number(
+                dot.dataset.slide
+              );
+
+
+            showSlide(
+              index
+            );
+
+
+          }
+        );
+
 
       }
     );
 
-  });
+
+    /* =================================================
+       INICIALIZAR
+    ================================================= */
+
+    showSlide(0);
 
 
-document.getElementById(
-  "current-year"
-).textContent =
-  new Date().getFullYear();
+    /* =================================================
+       CAMBIO AUTOMÁTICO
+       cada 6 segundos
+    ================================================= */
+
+    let automaticSlider =
+      setInterval(
+        function () {
+
+
+          showSlide(
+            currentSlide + 1
+          );
+
+
+        },
+        6000
+      );
+
+
+    /* =================================================
+       PAUSAR AL PONER RATÓN SOBRE COLLAGE
+    ================================================= */
+
+    const gallery =
+      document.getElementById(
+        "recpeeGallery"
+      );
+
+
+    if (
+      gallery
+    ) {
+
+
+      gallery.addEventListener(
+        "mouseenter",
+        function () {
+
+
+          clearInterval(
+            automaticSlider
+          );
+
+
+        }
+      );
+
+
+      gallery.addEventListener(
+        "mouseleave",
+        function () {
+
+
+          automaticSlider =
+            setInterval(
+              function () {
+
+
+                showSlide(
+                  currentSlide + 1
+                );
+
+
+              },
+              6000
+            );
+
+
+        }
+      );
+
+
+    }
+
+
+    /* =================================================
+       AÑO FOOTER
+    ================================================= */
+
+    const year =
+      document.getElementById(
+        "currentYear"
+      );
+
+
+    if (
+      year
+    ) {
+
+
+      year.textContent =
+        new Date()
+          .getFullYear();
+
+
+    }
+
+
+  }
+);
 
 </script>
 
 
 </body>
+
 </html>
